@@ -26,7 +26,6 @@ if not sw():
     led_onboard.on()
     firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
-    led_onboard.off()
     ota_updater.download_and_install_update_if_available()
     
 
