@@ -1,12 +1,15 @@
-# main.py (version 2)
-# OhmMeter with Big FONT, using Pico2040 and a sh1106 - ensure the sh1106.py script is saved to pico
-# now with OTA ability from my GitHub (alpha6321)
+# The Repo_source_main.py file, save as main.py on Repo
+# OhmMeter, using Pico2040 and a sh1106 - ensure the sh1106.py script is saved to the Pico *.
+# Now with OTA ability from my GitHub (alpha6321), uses Repo 'Ota' set for PUBLIC (fails if Pivate)
+# will upload to Pico W - if version number on Repo is changed.
+# The Pico W requires a reboot to run revsion. The onboard version will be changed to match that on Repo.
 #
-# Phil J Aug 23
+# Phil J Aug 23, based on this idea 'https://www.kevsrobots.com/blog/micropython-ota.html'
+#
+# As a simple test, modify the first line displayed on Oled, upload to the Repo and change its version #
+#
+#
 
-#
-# Pin's for I2C can be set almost arbitrary, just ensure in same I2C(group)
-#
 from machine import Pin, I2C
 import sh1106, time
 from ota import OTAUpdater
@@ -35,7 +38,7 @@ while sw():
     resistor2 = ((Vmean*resistor1)/(Ref_Voltage-Vmean))
     Rstr = str(resistor2)
     display.fill(0)
-    display.text("'RUT' = ", 0, 0, 1)  #character size default = 8x8 pixels
+    display.text("'RUT' value = ", 0, 0, 1)  #character size default = 8x8 pixels
     display.text(Rstr + ' OHMS', 6, 12, 1)   #second line in this case starts as row 12 (pixel from top)
     display.show()
     time.sleep(0.75)
