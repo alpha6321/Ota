@@ -48,7 +48,7 @@ while True:
     resistor2 = ((Vmean*resistor1)/(Ref_Voltage-Vmean))
     Rstr = str(resistor2)
     display.fill(0)
-    display.text("'RUT' sdae  = ", 0, 0, 1)  #character size default = 8x8 pixels
+    display.text("'RUT' fuck  = ", 0, 0, 1)  #character size default = 8x8 pixels
     display.text(Rstr + ' OHMS', 6, 12, 1)   #second line in this case starts as row 12 (pixel from top)
     display.show()
     time.sleep(0.75)
