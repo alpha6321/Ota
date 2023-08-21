@@ -23,7 +23,7 @@ led_onboard = Pin("LED", Pin.OUT)
 led_onboard.off()
 
 if not sw():
-    led_onboard.on()
+    led_onboard.on() # will set the LED if an update is/has occured
     firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
     ota_updater.download_and_install_update_if_available()
