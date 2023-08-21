@@ -26,8 +26,9 @@ if not sw():
     led_onboard.on()
     firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
-    ota_updater.download_and_install_update_if_available()
     led_onboard.off()
+    ota_updater.download_and_install_update_if_available()
+    
 
 i2c = I2C(0,scl=Pin(17), sda=Pin(16), freq=400000) # used 2 x 4K7 pull-ups
 display = sh1106.SH1106_I2C(128, 64, i2c)
