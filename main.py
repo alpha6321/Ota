@@ -19,15 +19,15 @@ from ota import OTAUpdater
 from WIFI_CONFIG import SSID, PASSWORD
 
 sw = Pin(18, Pin.IN, Pin.PULL_UP)
-#led_onboard = Pin("LED", Pin.OUT)
-#led_onboard.value(1)
+led_onboard = Pin("LED", Pin.OUT)
+led_onboard.off()
 
-
-if not sw(): 
+if not sw():
+    led_onboard.on()
     firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
     ota_updater.download_and_install_update_if_available()
-    #led_onboard.value(0)
+    led_onboard.off()
 
 i2c = I2C(0,scl=Pin(17), sda=Pin(16), freq=400000) # used 2 x 4K7 pull-ups
 display = sh1106.SH1106_I2C(128, 64, i2c)
