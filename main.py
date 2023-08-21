@@ -1,3 +1,4 @@
+# main.py (version 2)
 # OhmMeter with Big FONT, using Pico2040 and a sh1106 - ensure the sh1106.py script is saved to pico
 # now with OTA ability from my GitHub (alpha6321)
 #
