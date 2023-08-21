@@ -36,7 +36,7 @@ display.flip(1)
 
 potentiometer = machine.ADC(26)
 conversion_factor = 3.3 / (65535)
-
+led_onboard.off()
 
 while True:
     sum = 0
