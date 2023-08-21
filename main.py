@@ -15,9 +15,13 @@ import sh1106, time
 from ota import OTAUpdater
 from WIFI_CONFIG import SSID, PASSWORD
 
-firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
-ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
-ota_updater.download_and_install_update_if_available()
+sw = Pin(18, Pin.IN, Pin.PULL_UP)
+
+if not sw():
+    firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
+    ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
+    ota_updater.download_and_install_update_if_available()
+
 
 i2c = I2C(0,scl=Pin(17), sda=Pin(16), freq=400000) # used 2 x 4K7 pull-ups
 display = sh1106.SH1106_I2C(128, 64, i2c)
@@ -26,9 +30,9 @@ display.flip(1)
 
 potentiometer = machine.ADC(26)
 conversion_factor = 3.3 / (65535)
-sw = Pin(15, Pin.IN, Pin.PULL_UP)
 
-while sw():
+
+while True:
     sum = 0
     for i in range(5):
         sum = sum + potentiometer.read_u16()
@@ -38,7 +42,7 @@ while sw():
     resistor2 = ((Vmean*resistor1)/(Ref_Voltage-Vmean))
     Rstr = str(resistor2)
     display.fill(0)
-    display.text("'RUT' value = ", 0, 0, 1)  #character size default = 8x8 pixels
+    display.text("'RUT' dsdas  = ", 0, 0, 1)  #character size default = 8x8 pixels
     display.text(Rstr + ' OHMS', 6, 12, 1)   #second line in this case starts as row 12 (pixel from top)
     display.show()
     time.sleep(0.75)
