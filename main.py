@@ -20,7 +20,7 @@ from WIFI_CONFIG import SSID, PASSWORD
 
 sw = Pin(18, Pin.IN, Pin.PULL_UP)
 led_onboard = Pin("LED", Pin.OUT)
-led_onboard.off()
+#led_onboard.off()
 
 if not sw():
     led_onboard.on()
