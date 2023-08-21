@@ -20,9 +20,10 @@ from WIFI_CONFIG import SSID, PASSWORD
 
 sw = Pin(18, Pin.IN, Pin.PULL_UP)
 led_onboard = Pin("LED", Pin.OUT)
+led_onboard.value(1)
 
-if not sw():
-    led_onboard.value(1)
+
+if not sw(): 
     firmware_url = "https://raw.githubusercontent.com/alpha6321/Ota/"
     ota_updater = OTAUpdater(SSID, PASSWORD, firmware_url, "main.py")
     ota_updater.download_and_install_update_if_available()
